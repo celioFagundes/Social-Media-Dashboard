@@ -33,42 +33,47 @@ export const Container = styled.div`
 export const TitleContainer = styled.div`
     display:flex;
     flex-direction:column;
-    
+    height:100%;
     
     @media(max-width: 550px){
         padding-bottom:10px;
         width:100%;
-        &:after{
+
+        &::after{
             content:'';
             width:100%;
-            height:1px;
+            height:1px; 
+            padding:0; 
             background-color:${props => props.theme.colors.textBlue};
-            margin-top:15px;
+            
         }
-    }
+        
+    }  
 `;
 export const Title = styled.h1`
-    color : ${props => props.theme.colors.text}
+    color : ${props => props.theme.colors.text};
+    
 `;
 export const TotalFollowers = styled.p`
-    margin-top: 10px;
-    color : ${props => props.theme.colors.textBlue}
+    
+    color : ${props => props.theme.colors.textBlue};
+    margin-bottom:10px;
+    
+    
 `;
 export const ThemeToggleContainer = styled.div`
     display:flex;
     align-items:center;
+    flex-wrap:wrap;
     justify-content:space-between;
-    
-    
-
     @media(max-width: 550px){
-        width:100%;
-        
-        
+        width:100%;         
+         
     }
 `;
 export const SwitchLabel = styled.span`
     color : ${props => props.theme.colors.textBlue};
+    
    
 `;
 
