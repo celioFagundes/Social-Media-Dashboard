@@ -5,9 +5,10 @@ import light from './styles/themes/light';
 import dark from './styles/themes/dark';
 import GlobalStyle from './styles/global'
 
+import Background from './components/Background';
 import Header from './components/Header';
-import TotalSection from './components/TotalSection';
-import Overview from './components/Overview';
+import MediasSection from './components/MediasSection';
+
 
 function App() {
 
@@ -21,9 +22,9 @@ function App() {
     <ThemeProvider theme = {theme}>
       <div className="App">
         <GlobalStyle/>
+        <Background/>
         <Header toggleTheme = {toggleTheme} theme = {theme.title}/>
-        <TotalSection/>
-        <Overview/>
+        <MediasSection/>
       </div>
     </ThemeProvider>
     );

@@ -10,7 +10,8 @@ const light ={
         cardBackground: '#f0f3fa',
         cardHover: '#e1e3f0',
         upColor: 'hsl(163, 72%, 41%)',
-        downColor: 'hsl(356, 69%, 56%)'
+        downColor: 'hsl(356, 69%, 56%)',
+        filter: '',
     },
 };
 

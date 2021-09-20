@@ -6,12 +6,14 @@ export default createGlobalStyle`
         margin:0;
         padding:0;
         box-sizing:border-box; 
+        
     }
     body{
-        background-color: ${props => props.theme.colors.background};
+        background-color: ${props=> props.theme.colors.background};
         font-family: 'Inter', sans-serif;
         font-size:14px;
-        font-weight: 700
+        font-weight: 700;
+
     }
     .container{
         max-width: 1024px;

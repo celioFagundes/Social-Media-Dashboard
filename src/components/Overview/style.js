@@ -1,30 +1,22 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-
-    position:relative;
-    bottom:80px;
-    height: 300px;
-
+    
     @media(max-width: 1024px){
         padding: 30px 20px;
-        justify-content:space-around;
-        
-        
-    }
-    @media(max-width: 550px){
-        bottom:200px;
     }
 `;
 
 export const  Title = styled.h2`
-    color: ${props => props.theme.colors.text}
+    color: ${props => props.theme.colors.text};
 `;
 export const CardsBox = styled.div`
+
     display:flex;
-    justify-content:space-between;
+    justify-content:flex-start;
     align-items:center;
     flex-wrap:wrap;
+    height:100%;
     padding: 20px 0;
     margin:0 auto ;
 `;
@@ -32,10 +24,8 @@ export const  Card = styled.a`
     text-decoration:none;
 
     @media(max-width:550px){
-        width:100%;
-       
-    }
-    
+        width:100%;   
+    }  
 `;
 export const CardContainer = styled.div`
 
@@ -44,15 +34,15 @@ export const CardContainer = styled.div`
     justify-content: space-between;
     align-items:center;
     flex-wrap:wrap;
+
     height:120px;
     width: 230px;
-    
-    padding: 15px 20px;
-    
+    padding: 15px 20px; 
     margin-bottom:20px;
+    margin-right:20px;
     border-radius:5px;
-    background-color: ${props=> props.theme.colors.cardBackground};
 
+    background-color: ${props=> props.theme.colors.cardBackground}; 
     &:hover{
         background-color: ${props => props.theme.colors.cardHover}
     }
@@ -84,11 +74,14 @@ export const GrowRow = styled.div`
 `;  
 export const Quantity= styled.p`
     font-size: 28px;
-    color : ${props => props.theme.colors.text}
+    color : ${props => props.theme.colors.text};
 `;
 export const Grow = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    color : ${props => props.up ? props.theme.colors.upColor : props.theme.colors.downColor}
+    color : ${props => props.increase ? props.theme.colors.upColor : props.theme.colors.downColor};
+`;
+export const InitialMessage = styled.h2`
+    color: ${props => props.theme.colors.text};
 `;

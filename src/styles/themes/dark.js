@@ -10,7 +10,8 @@ const dark = {
         textBlue: 'hsl(228, 34%, 66%)',
         text: '#fff',
         upColor: 'hsl(163, 72%, 41%)',
-        downColor: 'hsl(356, 69%, 56%)'
+        downColor: 'hsl(356, 69%, 56%)',
+        filter: 'invert(100%)',
     },
 };
 export default dark
