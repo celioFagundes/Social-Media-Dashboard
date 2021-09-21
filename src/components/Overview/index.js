@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAccountsList } from '../ContextAccounts/accounts';
 import IconSelector from '../IconSelector/IconSelector';
 
 import {
@@ -15,18 +16,19 @@ import {
     Grow
     ,InitialMessage} from './style';
 
-export default function Overview({cardList}) {
+export default function Overview() {
     
+    const {accountsList} = useAccountsList()
     return(
 
         <Wrapper className = 'container'>
-            {cardList.length >0 ?
+            {accountsList.length >0 ?
             <Title>Overview - This week</Title>
             : <></>}
             <CardsBox>              
-                { cardList.length > 0
+                { accountsList.length > 0
                 ?   
-                cardList.map((card) =>(
+                accountsList.map((card) =>(
                     <Card key = {card.id} href= '#'>
                         <CardContainer>
                             <LabelRow>

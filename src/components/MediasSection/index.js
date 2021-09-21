@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
-import IconSelector from '../IconSelector/IconSelector' 
+import React, {useState,useEffect} from 'react';
+import { useCountFollowers } from '../ContextFollowers/totalfollowers';
+import { useAccountsList } from '../ContextAccounts/accounts';
+import IconSelector from '../IconSelector/IconSelector' ;
 
-import {AiFillCheckCircle} from 'react-icons/ai'
-import {MdCancel} from 'react-icons/md'
+import {AiFillCheckCircle} from 'react-icons/ai';
+import {MdCancel} from 'react-icons/md';
 
-import Overview from '../Overview';
 import 
     { 
     Wrapper,
@@ -29,16 +30,17 @@ import
     DeleteButton,
     } from './styles';
 
-export default function MediasSection(props) {
+export default function MediasSection() {
 
     const [displayAdd, setDisplayAdd] = useState(false);
     const [selectedMedia,setSelectedMedia] = useState('');
     const [newUsername,setNewUsername] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [currentBorderColor,setcurrentBorderColor] = useState('');
-    const [cardsList,setCardsList] = useState([]);
     const [currentCardLabel,setCurrentCardLabel] = useState('Followers');
     const [currentOverviewLabel,setCurrentOverviewLabel] = useState('');
+    const {setTotalFollowers} = useCountFollowers();
+    const {accountsList,setAccountsList} = useAccountsList();
 
     const HandleSelection = e =>{
         setSelectedMedia(e.target.value)
@@ -73,7 +75,7 @@ export default function MediasSection(props) {
     }
     const handleSubmit = e =>{
         e.preventDefault()
-        setCardsList([...cardsList,
+        setAccountsList([...accountsList,
             {id: Math.floor(Math.random() * (100 - 1)) + 1, 
             username: newUsername, 
             iconName: selectedMedia,
@@ -103,14 +105,21 @@ export default function MediasSection(props) {
     }
     const handleDelete = id =>{
 
-        let newList = cardsList.filter((item) => item.id !== id)
-        setCardsList(newList)
+        let newList = accountsList.filter((item) => item.id !== id)
+        setAccountsList(newList)
     }
 
+    useEffect(() =>{
+        
+            let total = accountsList.reduce((total, item) =>{
+                return total + item.totalNumbers
+            },0);
+            setTotalFollowers(total);
+        },[accountsList,setTotalFollowers]);
+
     return(
-
+        
         <Wrapper className = 'container'>
-
             <AddForm onSubmit={handleSubmit}>
                 <AddButton 
                 onClick = {() => setDisplayAdd(!displayAdd)} 
@@ -118,28 +127,28 @@ export default function MediasSection(props) {
                 type ='button'>+ New</AddButton>
                 <NewLoginData display = {displayAdd ? 1 : 0 }>
                     <SocialMediasList  
-                    onChange ={HandleSelection} value = {selectedMedia} required>
+                    onChange ={HandleSelection} value = {selectedMedia} >
                         <option value="" hidden>Choose here </option>
                         <option value="facebook">Facebook</option>
                         <option value="twitter">Twitter</option>
                         <option value="instagram">Instagram</option>
                         <option value="youtube">Youtube</option>                      
                     </SocialMediasList>
-                    <FormBox>
+                    <FormBox id ='inputs'>
                         <FormInput
-                        required
+                        
                         type = 'text'
                         onChange ={handleUsername}
                         value ={newUsername}
                         placeholder ='@username' />
                         <FormInput
-                        required
+                        
                         type="password"
                         placeholder ='Password'
                         onChange = {handlePassword}
                         value ={newPassword} />
                     </FormBox>
-                    <FormBox>
+                    <FormBox id = 'buttons'>
                         <FinishButton type="submit">
                             <AiFillCheckCircle size = {23} color = '#1EB589'/>
                         </FinishButton>
@@ -151,7 +160,7 @@ export default function MediasSection(props) {
             </AddForm>
 
             <CardsSection >
-                {cardsList.map((item)=>(
+                {accountsList.map((item)=>(
                     <Card key = {item.id} href = '#'>
                         <CardContainer borderColor ={item.borderColor}>
                             <DeleteButton>
@@ -187,8 +196,6 @@ export default function MediasSection(props) {
                     </Card>
                 ))}
             </CardsSection>
-            
-            <Overview cardList = {cardsList}/>
 
         </Wrapper>
         

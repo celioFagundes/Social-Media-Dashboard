@@ -1,16 +1,18 @@
 import React from 'react';
+import { useCountFollowers } from '../ContextFollowers/totalfollowers';
 import Switch from '../Switch'
 import { Wrapper,Container ,TitleContainer,Title,TotalFollowers,ThemeToggleContainer,SwitchLabel} from './styles';
 
 const Header = (props) => {
-
+    const {totalFollowers} = useCountFollowers();
     return(
 
         <Wrapper>
+            
             <Container className = 'container'>
                 <TitleContainer>
                     <Title>Social Media Dashboard</Title>
-                    <TotalFollowers>Total Followers: 23,004</TotalFollowers>
+                    <TotalFollowers>Total Followers: {totalFollowers}</TotalFollowers>
                 </TitleContainer>
                 
                 <ThemeToggleContainer>
