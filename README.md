@@ -12,6 +12,7 @@
 
 ### Acknowledgments
 - Design from Frontend Mentor
+- Just an example to practice, can't really add real social media accounts
 
 ### Learnings
 - Theme switch created using Theme Provider from Styled Components
