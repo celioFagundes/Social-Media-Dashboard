@@ -127,22 +127,22 @@ export default function MediasSection() {
                 type ='button'>+ New</AddButton>
                 <NewLoginData display = {displayAdd ? 1 : 0 }>
                     <SocialMediasList  
-                    onChange ={HandleSelection} value = {selectedMedia} >
+                    onChange ={HandleSelection} value = {selectedMedia} required>
                         <option value="" hidden>Choose here </option>
                         <option value="facebook">Facebook</option>
                         <option value="twitter">Twitter</option>
                         <option value="instagram">Instagram</option>
                         <option value="youtube">Youtube</option>                      
                     </SocialMediasList>
-                    <FormBox id ='inputs'>
+                    <FormBox id ='inputs' >
                         <FormInput
-                        
+                        required
                         type = 'text'
                         onChange ={handleUsername}
                         value ={newUsername}
                         placeholder ='@username' />
                         <FormInput
-                        
+                        required
                         type="password"
                         placeholder ='Password'
                         onChange = {handlePassword}
